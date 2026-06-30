@@ -1,0 +1,20 @@
+services:
+  laboratorio-bigdata:
+    build: .
+    container_name: container_bigdata
+    ports:
+      - "8888:8888" # Porta do Jupyter
+      - "4040:4040" # Porta da interface visual do Apache Spark
+    volumes:
+      - ./scripts:/tf/scripts   
+      - ./data:/tf/data
+    deploy:
+      resources:
+        limits:
+          cpus: '2.0'
+          memory: 4G
+        reservations:
+          devices:
+            - driver: nvidia
+              count: all
+              capabilities: [gpu]

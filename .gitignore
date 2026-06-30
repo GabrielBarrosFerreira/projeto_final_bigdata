@@ -1,0 +1,35 @@
+# ---------------------------------------------------------------------------
+# Configuracao local do Claude Code (uso pessoal, nao subir pro repo)
+# ---------------------------------------------------------------------------
+.claude/
+CLAUDE.md
+agent_docs/
+
+# ---------------------------------------------------------------------------
+# Dados pesados -- mantemos as pastas (via .gitkeep) mas ignoramos arquivos.
+# Os colegas que clonarem rodam o 01_download.ipynb pra popular raw_jpg/
+# e o 02_baseline_jpg.ipynb pra gerar results_00/.
+# ---------------------------------------------------------------------------
+data/raw_jpg/*
+!data/raw_jpg/.gitkeep
+
+data/results_00/*
+!data/results_00/.gitkeep
+
+# Resultados de execucoes futuras / saidas do Spark -- pasta inteira ignorada.
+data/results/
+data/optimized/
+
+# ---------------------------------------------------------------------------
+# Caches e checkpoints
+# ---------------------------------------------------------------------------
+.ipynb_checkpoints/
+__pycache__/
+*.pyc
+*.pyo
+
+# ---------------------------------------------------------------------------
+# Sistema operacional
+# ---------------------------------------------------------------------------
+.DS_Store
+Thumbs.db
