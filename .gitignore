@@ -18,6 +18,7 @@ data/results_00/*
 
 # Resultados de execucoes futuras / saidas do Spark -- pasta inteira ignorada.
 data/results/
+data/results_01/
 data/optimized/
 
 # ---------------------------------------------------------------------------

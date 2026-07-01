@@ -5,8 +5,11 @@ FROM nvcr.io/nvidia/tensorflow:25.02-tf2-py3
 # Define o dir de trabalho dentro do contêiner
 WORKDIR /tf
 
-# Instala o Java (Para o Spark funcionar)
-RUN apt-get update && apt-get install -y default-jre && apt-get clean && rm -rf /var/lib/apt/lists/*
+# Java 17 (o Spark 3.5.0 suporta oficialmente Java 8/11/17). O `default-jre` da imagem
+# (Ubuntu 24.04) puxava Java 21, incompativel com o Arrow do PySpark
+# (erro: "sun.misc.Unsafe or java.nio.DirectByteBuffer.<init>(long, int) not available").
+RUN apt-get update && apt-get install -y openjdk-17-jre-headless && apt-get clean && rm -rf /var/lib/apt/lists/*
+ENV JAVA_HOME=/usr/lib/jvm/java-17-openjdk-amd64
 
 # Copia nosso arquivo de requisitos para dentro do contêiner
 COPY requirements.txt /tmp/
